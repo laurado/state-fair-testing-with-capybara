@@ -17,26 +17,6 @@ get "/foods" do
   erb :"foods/index"
 end
 
-get "/foods/new" do
-  erb :"foods/new"
-end
-
-post "/foods/new" do
-  item = params["item"]
-  vendor = params["vendor"]
-
-  @error = nil
-
-  if [item, vendor].include?("")
-    @error = "Please fill in all fields"
-    erb :"foods/new"
-  else
-    CSV.open(csv_file, "a", headers: true) do |csv|
-      csv << [item, vendor]
-    end
-    redirect "foods"
-  end
-end
 
 # Helper Methods
 
