@@ -34,7 +34,7 @@ post "/foods/new" do
     CSV.open(csv_file, "a", headers: true) do |csv|
       csv << [item, vendor]
     end
-    redirect to("/foods")
+    redirect "foods"
   end
 end
 
